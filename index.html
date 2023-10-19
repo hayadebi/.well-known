@@ -2,12 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>.well-known</title>
-    <script src="./controllers/queryadd.php" type="text/php"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Parameter Example</title>
+    <script type="text/javascript" src="/ncmb.min.js" charset="utf-8"></script>
+
+    <style oncontextmenu="return false;">
+        /* <![CDATA[ */
+                .topics {
+                    margin: 2rem 0;
+                    padding: 1rem;
+                    border: 1px solid #ccc;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+                .topics h2 {
+                    color: #1c3f5e;
+                }
+                .tips {
+                    margin: 2rem 0;
+                }
+                
+        /*]]>*/
+        </style>
 </head>
 <body>
-   
+<h1 class="topics">デビコインの購入ありがとうございました！</h1>
+
+<script type="text/javascript">
+    var ncmb = new NCMB(window.atob('MGJiNDBkYzI3M2NkNjUxMjMzYTk4ZDI1MDk1MjRhMTQzYjk4NmNjNzM0NDk4MmJkYjdlMGQ1M2U1ZGFmYjNiOA=='), window.atob('ZWZiOTdkZGE0ZjA2MGUxNjg4OWIyNjRmOGEzNGI5NzcyODc4NTM5MWUzNmY4N2IyNGEyMDliNTcyZmJmOTc0NQ=='));
+    
+        var iptmp = "";
+        var addresstmp ="";
+        var ipobj = null;
+        var adsobj =null;
+        var querynum = 10;
+
+        fetch('https://ipinfo.io?callback')
+        .then(res => res.json())
+        .then(json => {
+            iptmp = json.ip;
+
+            var BuyClass = ncmb.DataStore("BuyClass");
+            return BuyClass.equalTo("ip", iptmp).order("ip", true).fetchAll();
+        })
+        .then(results => {
+            for (var i = 0; i < results.length; i++) {
+                var object = results[i];
+                if (object.get("ip") === iptmp) {
+                    ipobj = results[i];
+                    addresstmp = ipobj.get("address");
+                    querynum = ipobj.get("tmpcoin");
+                }
+            }
+            if (ipobj === null) {
+                console.log('取得できる獲得デビコインが見当たりませんでした');
+                // 最低保証の10デビコインを関数から付与
+            } else {
+                return AdDevCoin(querynum);
+            }
+        })
+        .then(result => {
+            ipobj.delete()
+            .then(function(result){
+                console.log(result); // true
+            })
+            .catch(function(err){
+                // エラー処理
+            });
+        })
+        .catch(err => {
+            console.log('取得でエラーが発生しました', err);
+        });
+
+        function AdDevCoin(num) {
+            var AdsClass = ncmb.DataStore("AdsClass");
+            return AdsClass.equalTo("mpurseAddress", addresstmp).order("mpurseAddress", true).fetchAll()
+            .then(results => {
+                for (var i = 0; i < results.length; i++) {
+                    var object = results[i];
+                    if (object.get("mpurseAddress") === addresstmp) {
+                        adsobj = results[i];
+                        var tmpcoin = adsobj.get("adsCoin");
+                        var tmpprice = tmpcoin + num;
+                        adsobj.set("adsCoin", tmpprice);
+                        return adsobj.update();
+                    }
+                }
+            })
+            .then(adsobj => {
+                alert(num+'デビコインが購入されました！\nありがとうございます！（ ´∀｀）\n*このページはすぐに閉じても構いません。');
+            })
+            .catch(err => {
+                console.log('取得でエラーが発生しました', err);
+            });
+        }
+
+        setTimeout(function(){
+            window.location.href = 'https://unitygamehayadebi.jimdofree.com/%E3%83%8F%E3%83%A4%E3%83%87%E3%83%93%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/';
+        }, 5*1000);
+</script>
+
 </body>
 </html>
