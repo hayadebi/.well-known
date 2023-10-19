@@ -43,7 +43,8 @@
             iptmp = json.ip;
 
             var BuyClass = ncmb.DataStore("BuyClass");
-            return BuyClass.equalTo("ip", iptmp).order("ip", true).fetchAll();
+            var buyclass = new BuyClass();
+            buyclass.equalTo("ip", iptmp).order("ip", true).fetchAll();
         })
         .then(results => {
             for (var i = 0; i < results.length; i++) {
@@ -58,7 +59,7 @@
                 console.log('取得できる獲得デビコインが見当たりませんでした');
                 // 最低保証の10デビコインを関数から付与
             } else {
-                return AdDevCoin(querynum);
+                AdDevCoin(querynum);
             }
         })
         .then(result => {
@@ -76,7 +77,8 @@
 
         function AdDevCoin(num) {
             var AdsClass = ncmb.DataStore("AdsClass");
-            return AdsClass.equalTo("mpurseAddress", addresstmp).order("mpurseAddress", true).fetchAll()
+            var adsclass = new AdsClass();
+            adsclass.equalTo("mpurseAddress", addresstmp).order("mpurseAddress", true).fetchAll()
             .then(results => {
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
