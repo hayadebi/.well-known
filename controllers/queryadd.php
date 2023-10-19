@@ -7,7 +7,7 @@
     <script type="text/javascript" src="/ncmb.min.js" charset="utf-8"></script>
 </head>
 <body>
-
+<h1 class="topics">デビコインの購入ありがとうございました！</h1>
 <?php
     // クエリパラメータを取得
     if (isset($_GET['query'])) {
