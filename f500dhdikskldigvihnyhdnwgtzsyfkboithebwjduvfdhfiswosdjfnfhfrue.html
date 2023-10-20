@@ -30,15 +30,8 @@
 
 <script type="text/javascript">
         var ncmb = new NCMB(window.atob('MGJiNDBkYzI3M2NkNjUxMjMzYTk4ZDI1MDk1MjRhMTQzYjk4NmNjNzM0NDk4MmJkYjdlMGQ1M2U1ZGFmYjNiOA=='), window.atob('ZWZiOTdkZGE0ZjA2MGUxNjg4OWIyNjRmOGEzNGI5NzcyODc4NTM5MWUzNmY4N2IyNGEyMDliNTcyZmJmOTc0NQ=='));
-        var iptmp = "";
+        var iptmp = navigator.userAgent;
         var querynum = 500;
-        var script = document.createElement('script');
-        script.src='https://ipinfo.io?callback=callback'
-        document.head.appendChild(script);
-
-        function callback(data) {
-          iptmp=data.ip;
-         };
 
         var BuyClass = ncmb.DataStore("BuyClass");
         var buyclass = new BuyClass();
