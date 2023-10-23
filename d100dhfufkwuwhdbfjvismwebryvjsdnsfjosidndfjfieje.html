@@ -38,10 +38,10 @@
         var BuyClass = ncmb.DataStore("BuyClass");
         var buy = BuyClass.fetchById("XxEJj6ke9bQ88w44");
 
-        var targetid = buy.get("ip");
+        var targetid = buy.ip;
         var AdsClass = ncmb.DataStore("AdsClass");
         var ads = AdsClass.fetchById(targetid);
-        var tmpresult = ads.get("adsCoin") + querynum;
+        var tmpresult = ads.adsCoin + querynum;
         ads.set("adsCoin", tmpresult).update();
 
         setTimeout(function () {
