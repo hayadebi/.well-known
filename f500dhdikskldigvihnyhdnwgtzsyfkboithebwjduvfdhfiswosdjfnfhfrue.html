@@ -33,15 +33,15 @@
     <h1 class="topics">500デビコインが購入されました！ありがとうございます！（ ´∀｀）<br />*このページはすぐに閉じても構いません</h1>
 
     <script type="text/javascript">
-        var ncmb = new NCMB(window.atob('MGJiNDBkYzI3M2NkNjUxMjMzYTk4ZDI1MDk1MjRhMTQzYjk4NmNjNzM0NDk4MmJkYjdlMGQ1M2U1ZGFmYjNiOA=='), window.atob('ZWZiOTdkZGE0ZjA2MGUxNjg4OWIyNjRmOGEzNGI5NzcyODc4NTM5MWUzNmY4N2IyNGEyMDliNTcyZmJmOTc0NQ=='));
-        var querynum = 5000;
+       var ncmb = new NCMB(window.atob('MGJiNDBkYzI3M2NkNjUxMjMzYTk4ZDI1MDk1MjRhMTQzYjk4NmNjNzM0NDk4MmJkYjdlMGQ1M2U1ZGFmYjNiOA=='), window.atob('ZWZiOTdkZGE0ZjA2MGUxNjg4OWIyNjRmOGEzNGI5NzcyODc4NTM5MWUzNmY4N2IyNGEyMDliNTcyZmJmOTc0NQ=='));
+        var querynum = 500;
 
         var BuyClass = ncmb.DataStore("BuyClass");
         var buy = BuyClass.fetchById("XxEJj6ke9bQ88w44");
-        var adsid = buy.get("ip");
+        var adsid = buy.ip;
         var AdsClass = ncmb.DataStore("AdsClass");
         var ads = AdsClass.fetchById(adsid);
-        var tmpresult = ads.get("adsCoin");
+        var tmpresult = ads.adsCoin;
         var resultcoin = tmpresult + querynum;
         ads.set("adsCoin", resultcoin).update(); // 保存したgameScoreオブジェクトを更新
         setTimeout(function () {
@@ -49,7 +49,7 @@
                 "https://unitygamehayadebi.jimdofree.com/%E3%83%8F%E3%83%A4%E3%83%87%E3%83%93%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/",
                 "_blank"
             );
-        }, 300);
+        }, 150);
     </script>
 </body>
 </html>
