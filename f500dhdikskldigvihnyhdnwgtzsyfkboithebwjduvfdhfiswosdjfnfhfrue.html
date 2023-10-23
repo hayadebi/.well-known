@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Query Parameter Example</title>
-    <script type="text/javascript" src="/ncmb.min.js" charset="utf-8"></script>
 
     <style oncontextmenu="return false;">
         /* <![CDATA[ */
@@ -27,7 +26,7 @@
     </style>
     <META http-equiv="refresh" content="6; url=https://unitygamehayadebi.jimdofree.com/%E3%83%8F%E3%83%A4%E3%83%87%E3%83%93%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/">
 </head>
-<script type="text/javascript" src="/ncmb.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/ncmb.min.js" charset="utf-8"></script>
 <body>
 
     <h1 class="topics">500デビコインが購入されました！ありがとうございます！（ ´∀｀）<br />*このページはすぐに閉じても構いません</h1>
@@ -38,13 +37,19 @@
 
         var BuyClass = ncmb.DataStore("BuyClass");
         var buy = BuyClass.fetchById("XxEJj6ke9bQ88w44");
-        buy.set("tmpcoin", querynum).update(); // 保存したgameScoreオブジェクトを更新
+
+        var targetid = buy.get("ip");
+        var AdsClass = ncmb.DataStore("AdsClass");
+        var ads = AdsClass.fetchById(targetid);
+        var tmpresult = ads.get("adsCoin") + querynum;
+        ads.set("adsCoin", tmpresult).update(); 
+
         setTimeout(function () {
             window.open(
                 "https://unitygamehayadebi.jimdofree.com/%E3%83%8F%E3%83%A4%E3%83%87%E3%83%93%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/",
                 "_blank"
             );
-        }, 150);
+        }, 300);
     </script>
 </body>
 </html>
