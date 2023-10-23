@@ -25,54 +25,30 @@
         </style>
         <META http-equiv="refresh" content="6; url=https://unitygamehayadebi.jimdofree.com/%E3%83%8F%E3%83%A4%E3%83%87%E3%83%93%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/">
 </head>
+<script type="text/javascript" src="/ncmb.min.js" charset="utf-8"></script>
 <body>
-    <script type="text/javascript" src="/ncmb.min.js" charset="utf-8"></script>
-    <h1 class="topics">10デビコインが購入されました！\nありがとうございます！（ ´∀｀）\n*このページはすぐに閉じても構いません</h1>
+    
+    <h1 class="topics">10デビコインが購入されました！ありがとうございます！（ ´∀｀）<br/>*このページはすぐに閉じても構いません</h1>
 
     <script type="text/javascript">
-        var ncmb = new NCMB(window.atob('MGJiNDBkYzI3M2NkNjUxMjMzYTk4ZDI1MDk1MjRhMTQzYjk4NmNjNzM0NDk4MmJkYjdlMGQ1M2U1ZGFmYjNiOA=='), window.atob('ZWZiOTdkZGE0ZjA2MGUxNjg4OWIyNjRmOGEzNGI5NzcyODc4NTM5MWUzNmY4N2IyNGEyMDliNTcyZmJmOTc0NQ=='));        
+        var ncmb = new NCMB(window.atob('MGJiNDBkYzI3M2NkNjUxMjMzYTk4ZDI1MDk1MjRhMTQzYjk4NmNjNzM0NDk4MmJkYjdlMGQ1M2U1ZGFmYjNiOA=='), window.atob('ZWZiOTdkZGE0ZjA2MGUxNjg4OWIyNjRmOGEzNGI5NzcyODc4NTM5MWUzNmY4N2IyNGEyMDliNTcyZmJmOTc0NQ=='));
         var querynum = 10;
 
         var BuyClass = ncmb.DataStore("BuyClass");
-        var buy = BuyClass
-                  .fetchById("XxEJj6ke9bQ88w44")
-                  .then(buy => {
-                    console.log('データあり');
-                  })
-                  .catch(e => {
-                    console.log('データなし');
-                  });
+        var buy = BuyClass.fetchById("XxEJj6ke9bQ88w44");
         var adsid = buy.get("ip");
         var AdsClass = ncmb.DataStore("AdsClass");
-        var ads = AdsClass
-                  .fetchById(String(adsid))
-                  .then(ads => {
-                    console.log('データあり');
-                  })
-                  .catch(e => {
-                    console.log('データなし');
-                  });
-        var tmpresult = ads.get("adsCoin")
-        var resultcoin = parseFloat(tmpresult) + querynum;
-        ads.set("adsCoin", resultcoin)
-         .save() // gameScoreオブジェクトを保存
-         .then(function(ads){
-           buyclass.set("adsCoin", resultcoin);
-           return ads.update(); // 保存したgameScoreオブジェクトを更新
-         })
-         .then(function(gameScore){
-           // 更新後の処理
-              location.replace('https://unitygamehayadebi.jimdofree.com/%E3%83%8F%E3%83%A4%E3%83%87%E3%83%93%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/');
-          })
-         .catch(function(err){
-           // エラー処理
-         });
+        var ads = AdsClass.fetchById(adsid);
+        var tmpresult = ads.get("adsCoin");
+        var resultcoin = tmpresult + querynum;
+        ads.set("adsCoin", resultcoin).save();
+        return ads.update(); // 保存したgameScoreオブジェクトを更新
         setTimeout(function () {
             window.open(
                 "https://unitygamehayadebi.jimdofree.com/%E3%83%8F%E3%83%A4%E3%83%87%E3%83%93%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97/",
                 "_blank"
             );
-        }, 0.5 * 1000);
+        }, 0.3 * 1000);
     </script>
 
 </body>
